@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js"></script>
     <meta charset="UTF-8">
     <title>Introducir Lados</title>
     <?php $figura = $_GET["figura"]; ?>
 </head>
 <body class="<?php echo strtolower($figura); ?>">
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- ---------------------------------------------- AJAX ------------------------------------------------------ -->
     <script>
         $(document).ready(function(){
             $('.form-container form').submit(function(e){
@@ -24,38 +26,38 @@
             });
         });
     </script>
-
-<h1>Introduce los lados de la figura <?php echo $figura; ?>:</h1>
+<!-- ---------------------------------------------- AJAX ------------------------------------------------------ -->
 
 <div class="form-container <?php echo strtolower($figura); ?>">
+    <h1>Introduce los lados de la figura <?php echo $figura; ?>:</h1>
     <?php
     if ($figura === "Triangulo") {
     ?>
-        <form action="calcular_triangulo.php" method="post">
-            Lado 1: <input type="number" name="lado1" required><br>
-            Lado 2: <input type="number" name="lado2" required><br>
+        <form action="calcular_triangulo.php" method="post" onsubmit="return validarYEnviar(event)">
+            Lado 1: <input type="number" name="lado1" id="lado1"><br>
+            Lado 2: <input type="number" name="lado2" id="lado2"><br>
             <input type="submit" value="Calcular">
         </form>
     <?php
     } elseif ($figura === "Rectangulo") {
     ?>
-        <form action="calcular_rectangulo.php" method="post">
-            Lado 1: <input type="number" name="lado1" required><br>
-            Lado 2: <input type="number" name="lado2" required><br>
+        <form action="calcular_rectangulo.php" method="post" onsubmit="return validarYEnviar(event)">
+            Lado 1: <input type="number" name="lado1" id="lado1"><br>
+            Lado 2: <input type="number" name="lado2" id="lado2"><br>
             <input type="submit" value="Calcular">
         </form>
     <?php
     } elseif ($figura === "Cuadrado") {
     ?>
-        <form action="calcular_cuadrado.php" method="post">
-            Lado: <input type="number" name="lado1" required><br>
+        <form action="calcular_cuadrado.php" method="post" onsubmit="return validarYEnviar(event)">
+            Lado: <input type="number" name="lado1" id="ladoc"><br>
             <input type="submit" value="Calcular">
         </form>
     <?php
     } elseif ($figura === "Circulo") {
     ?>
-        <form action="calcular_circulo.php" method="post">
-            Radio: <input type="number" name="radio" required><br>
+        <form action="calcular_circulo.php" method="post" onsubmit="return validarYEnviar(event)">
+            Radio: <input type="number" name="radio" id="ladoc"><br>
             <input type="submit" value="Calcular">
         </form>
     <?php
