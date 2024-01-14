@@ -9,8 +9,12 @@
 </head>
 <body class="<?php echo strtolower($figura); ?>">
 
+<a href="index.php" class="boton">
+    <img src="./img/atras.png">
+</a>
+
 <!-- ---------------------------------------------- AJAX ------------------------------------------------------ -->
-    <script>
+<script>
         $(document).ready(function(){
             $('.form-container form').submit(function(e){
                 e.preventDefault();
@@ -34,30 +38,36 @@
     if ($figura === "Triangulo") {
     ?>
         <form action="calcular_triangulo.php" method="post" onsubmit="return validarYEnviar(event)">
-            Lado 1: <input type="number" name="lado1" id="lado1"><br>
-            Lado 2: <input type="number" name="lado2" id="lado2"><br>
+            Lado 1: <input type="text" name="lado1" id="lado1"><br>
+            <div id="error-lado1" class="error-message"></div>
+            Lado 2: <input type="text" name="lado2" id="lado2"><br>
+            <div id="error-lado2" class="error-message"></div>
             <input type="submit" value="Calcular">
         </form>
     <?php
     } elseif ($figura === "Rectangulo") {
     ?>
         <form action="calcular_rectangulo.php" method="post" onsubmit="return validarYEnviar(event)">
-            Lado 1: <input type="number" name="lado1" id="lado1"><br>
-            Lado 2: <input type="number" name="lado2" id="lado2"><br>
+            Lado 1: <input type="text" name="lado1" id="lado1"><br>
+            <div id="error-lado1" class="error-message"></div>
+            Lado 2: <input type="text" name="lado2" id="lado2"><br>
+            <div id="error-lado2" class="error-message"></div>
             <input type="submit" value="Calcular">
         </form>
     <?php
     } elseif ($figura === "Cuadrado") {
     ?>
-        <form action="calcular_cuadrado.php" method="post" onsubmit="return validarYEnviar(event)">
-            Lado: <input type="number" name="lado1" id="ladoc"><br>
+        <form action="calcular_cuadrado.php" method="post" onsubmit="return validarYEnviar2(event)">
+            Lado: <input type="text" name="lado1" id="lado1"><br>
+            <div id="error-lado1" class="error-message"></div>
             <input type="submit" value="Calcular">
         </form>
     <?php
     } elseif ($figura === "Circulo") {
     ?>
-        <form action="calcular_circulo.php" method="post" onsubmit="return validarYEnviar(event)">
-            Radio: <input type="number" name="radio" id="ladoc"><br>
+        <form action="calcular_circulo.php" method="post" onsubmit="return validarYEnviar2(event)">
+            Radio: <input type="text" name="radio" id="lado1"><br>
+            <div id="error-lado1" class="error-message"></div>
             <input type="submit" value="Calcular">
         </form>
     <?php
@@ -66,14 +76,25 @@
     }
     ?>
 </div>
-</body>
-</html>
 
 <div id="result-container" class="result-container <?php echo strtolower($figura); ?>">
 
 </div>
 
+</body>
+</html>
+
+
+
 <style>
+    .boton {
+        cursor: pointer;
+    }
+
+    .boton img {
+        width: 40px; /* Ajusta el ancho de la imagen según tus necesidades */
+        height: auto; /* Mantiene la proporción de la imagen */
+    }
     body {
     font-family: Arial, sans-serif;
     padding: 20px; /* Espacio alrededor del contenido */
@@ -109,7 +130,7 @@
         border-radius: 5px;
         margin-top: 20px; /* Espacio entre el título y el formulario */
     }
-    input[type="number"],
+    input[type="text"],
     input[type="submit"] {
         width: calc(100% - 22px);
         padding: 10px;
@@ -167,5 +188,12 @@
         border-radius: 5px;
         margin-top: 20px; /* Espacio entre el título y el formulario */
         background-color: #77FCF6; /* Color para Círculo */
+    }
+    .error-message {
+            color: red;
+            margin-bottom: 10px;
+    }
+    .error-border {
+            border: 1px solid red;
     }
 </style>

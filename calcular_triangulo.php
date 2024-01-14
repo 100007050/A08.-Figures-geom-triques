@@ -18,3 +18,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["lado1"]) && isset($_PO
     echo "Por favor, ingresa los lados del triángulo.";
 }
 
+
